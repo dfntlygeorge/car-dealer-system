@@ -1,0 +1,11 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["prismaSchemaFolder", "strictUndefinedChecks", "driverAdapters"] // strictUndefinedChecks errors in prisma when a value can potentially be undefined
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
