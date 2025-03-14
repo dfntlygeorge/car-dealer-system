@@ -14,7 +14,7 @@ model Classified {
     make           Make             @relation(fields: [makeId], references: [id])
     modelId        Int              @map("model_id")
     model          Model            @relation(fields: [modelId], references: [id])
-    modelVariantId Int              @map("model_variant_id")
+    modelVariantId Int?             @map("model_variant_id")
     modelVariant   ModelVariant?    @relation(fields: [modelVariantId], references: [id])
     ulezCompliant  ULEZCompliance   @default(EXEMPT)
     transmission   Transmission     @default(MANUAL)
