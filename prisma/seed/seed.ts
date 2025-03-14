@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { seedTaxonomy } from "./taxonomy.seed";
-import { seedClassifieds } from "./classified.seed";
+import { seedImages } from "./images.seed";
 
 const prisma = new PrismaClient();
 
@@ -9,8 +8,8 @@ async function main() {
   // runs a raw SQL query to truncate the makes table and restart the identity column.
   // await prisma.$executeRaw`TRUNCATE TABLE "makes" RESTART IDENTITY CASCADE`; //
   // await seedTaxonomy(prisma);
-
-  await seedClassifieds(prisma);
+  // await seedClassifieds(prisma);
+  await seedImages(prisma);
 }
 
 main()
