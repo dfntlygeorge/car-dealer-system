@@ -20,11 +20,10 @@ export async function seedTaxonomy(prisma: PrismaClient) {
       .pipe(
         parse({
           columns: true,
-        }) // parse csv rows into javascript objects.
+        }), // parse csv rows into javascript objects.
       )
       .on("data", (row: { [index: string]: string }) => {
         // row is an object that has dynamic index
-        // console.log({ row });
         eachRow.push({
           make: row.Make,
           model: row.Model,
@@ -129,7 +128,7 @@ export async function seedTaxonomy(prisma: PrismaClient) {
               },
             },
           },
-        })
+        }),
       );
     }
   }
@@ -138,7 +137,7 @@ export async function seedTaxonomy(prisma: PrismaClient) {
   async function insertInBatches<TUpsertArgs>(
     items: TUpsertArgs[],
     batchSize: number,
-    insertFunction: (batch: TUpsertArgs[]) => void
+    insertFunction: (batch: TUpsertArgs[]) => void,
   ) {
     for (let i = 0; i < items.length; i += batchSize) {
       const batch = items.slice(i, i + batchSize);
@@ -153,7 +152,7 @@ export async function seedTaxonomy(prisma: PrismaClient) {
     async (batch) => {
       const models = await Promise.all(batch);
       console.log(`Seeded db with ${models.length} models 🌱`);
-    }
+    },
   );
 
   // array of promises that interact with the ModelVariant table.
@@ -172,7 +171,7 @@ export async function seedTaxonomy(prisma: PrismaClient) {
     for (const model of models) {
       // inner loop: iterate over the variants of the model. Specifically, we get the key/value pairs of the variants object. Desctructure the key-variant and value-year_range.
       for (const [variant, year_range] of Object.entries(
-        result[make.name][model.name].variants
+        result[make.name][model.name].variants,
       )) {
         // push an upsert query to the variantPromises array.
         variantPromises.push(
@@ -196,7 +195,7 @@ export async function seedTaxonomy(prisma: PrismaClient) {
                   : new Date().getFullYear(),
               model: { connect: { id: model.id } },
             },
-          })
+          }),
         );
       }
     }
@@ -209,6 +208,6 @@ export async function seedTaxonomy(prisma: PrismaClient) {
     async (batch) => {
       const variants = await Promise.all(batch);
       console.log(`Seeded db with ${variants.length} variants 🌱`);
-    }
+    },
   );
 }

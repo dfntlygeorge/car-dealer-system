@@ -54,7 +54,7 @@ export const CustomPagination = (props: PaginationProps) => {
     const halfVisible = Math.floor(maxVisiblePages / 2); // calculate how many pages to show on each side of the current page.
     const newStart = Math.max(
       1,
-      Math.min(currentPage - halfVisible, totalPages - maxVisiblePages + 1)
+      Math.min(currentPage - halfVisible, totalPages - maxVisiblePages + 1),
     ); // current page-halfVisible centers the current page as much as possible. totalPages - maxVisiblePages ensures we don't overshoot the total number of pages.
     const newEnd = Math.min(totalPages, newStart + maxVisiblePages - 1); // ensures the pagination range doesnt exceed totalPages.
     setVisibleRange({ start: newStart, end: newEnd });
@@ -83,12 +83,12 @@ If they click the right ellipsis ("right"), it moves them forward to a later pag
 
   return (
     <PaginationRoot className={styles.paginationRoot}>
-      <PaginationContent className="lg:gap-4">
+      <PaginationContent className="justify-end lg:gap-4">
         <PaginationItem>
           <PaginationPrevious
             className={cn(
               currentPage <= 1 && "hidden",
-              styles.paginationPrevious
+              styles.paginationPrevious,
             )}
             href={createPageUrl(currentPage - 1)}
             onClick={(e) => {
@@ -114,7 +114,7 @@ If they click the right ellipsis ("right"), it moves them forward to a later pag
         )}
         {Array.from(
           { length: visibleRange.end - visibleRange.start + 1 }, // from creates n elements(from visible start to end) + 1 so both start and end are included that is populated by the second argument. which we have the actual variable which we don't need in this case.
-          (_, index) => visibleRange.start + index
+          (_, index) => visibleRange.start + index,
         ).map((pageNumber) => {
           const isActive = currentPage === pageNumber;
           let rel = ""; // good for SEO since it allow search engines to crawl each page in your paginated stack,
@@ -134,7 +134,7 @@ If they click the right ellipsis ("right"), it moves them forward to a later pag
                 }}
                 className={cn(
                   styles.paginationLink,
-                  isActive && styles.paginationLinkActive
+                  isActive && styles.paginationLinkActive,
                 )}
                 {...(rel ? { rel } : {})} // if rel is present, add it to the element.
               >
@@ -163,7 +163,7 @@ If they click the right ellipsis ("right"), it moves them forward to a later pag
           <PaginationNext
             className={cn(
               currentPage >= totalPages && "hidden",
-              styles.paginationNext
+              styles.paginationNext,
             )}
             href={createPageUrl(currentPage + 1)}
             onClick={(e) => {

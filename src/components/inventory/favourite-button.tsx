@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { HeartIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { api } from "@/lib/api-client";
-import { endpoints } from "@/config/enpoints";
+import { endpoints } from "@/config/endpoints";
 
 interface FavouriteButtonProps {
   setIsFavourite: (isFavourite: boolean) => void;
@@ -34,18 +34,18 @@ export const FavouriteButton = (props: FavouriteButtonProps) => {
       variant="ghost"
       size="icon"
       className={cn(
-        "absolute top-2.5 left-3.5 rounded-full z-10 group !h-8 !w-8 lg:!h-9 lg:!w-9 xl:!h-10 xl:!w-10 hover:bg-white/90 transition-colors duration-200",
-        isFavourite ? "bg-white shadow-sm" : "bg-white/70 backdrop-blur-sm"
+        "group absolute top-2.5 left-3.5 z-10 !h-8 !w-8 rounded-full transition-colors duration-200 hover:bg-white/90 lg:!h-9 lg:!w-9 xl:!h-10 xl:!w-10",
+        isFavourite ? "bg-white shadow-sm" : "bg-white/70 backdrop-blur-sm",
       )}
       onClick={handleFavourite}
     >
       <HeartIcon
         className={cn(
-          "w-3.5 h-3.5 lg:w-4 lg:h-4 xl:w-6 xl:h-6",
+          "h-3.5 w-3.5 lg:h-4 lg:w-4 xl:h-6 xl:w-6",
           "transition-colors duration-200 ease-in-out",
           isFavourite
-            ? "text-pink-500 fill-pink-500"
-            : "text-white group-hover:text-pink-500 group-hover:fill-pink-500"
+            ? "fill-pink-500 text-pink-500"
+            : "text-white group-hover:fill-pink-500 group-hover:text-pink-500",
         )}
       />
     </Button>

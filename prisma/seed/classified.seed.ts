@@ -29,7 +29,7 @@ export async function seedClassifieds(prisma: PrismaClient) {
   const classifiedsData: Prisma.ClassifiedCreateManyInput[] = [];
 
   // loop through 25 times and create a classified for each iteration.
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 100; i++) {
     // fetch a random make from the makes array/table from the db.
     const make = faker.helpers.arrayElement(makes);
 

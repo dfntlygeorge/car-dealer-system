@@ -1,4 +1,5 @@
 import { Prisma } from "@prisma/client";
+import { ChangeEvent } from "react";
 
 // we do this now because searchParams is a promise in Next.js 15 and not a regular object.
 type Params = {
@@ -33,4 +34,26 @@ export enum MultiStepFormEnum {
 
 export interface Favourites {
   ids: number[];
+}
+
+export interface TaxonomyFiltersProps extends AwaitedPageProps {
+  // extends AwaitedPageProps since we want the searchParams here.
+  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+}
+
+export type FilterOptions<LType, VType> = Array<{ label: LType; value: VType }>; // basically an array of objects where each object has a label and a value.
+
+export interface SidebarProps extends AwaitedPageProps {
+  minMaxValues: Prisma.GetClassifiedAggregateType<{
+    _min: {
+      year: true;
+      price: true;
+      odoReading: true;
+    };
+    _max: {
+      year: true;
+      price: true;
+      odoReading: true;
+    };
+  }>;
 }

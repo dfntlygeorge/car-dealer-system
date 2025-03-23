@@ -5,11 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: var(--font-heading), ui-serif, Georgia, Cambria,
-    "Times New Roman", Times, serif;
-  --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", Sego "e UI Symbol",
-    "Noto Color Emoji";
+  --font-heading:
+    var(--font-heading), ui-serif, Georgia, Cambria, "Times New Roman", Times,
+    serif;
+  --font-body:
+    var(--font-body), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", Sego "e UI Symbol", "Noto Color Emoji";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -137,4 +138,13 @@
   h6 {
     @apply font-heading;
   }
+}
+
+.custom-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='gray'><path d='m7 10l5 5 5-5z'/></svg>")
+    no-repeat;
+  background-position: right 0px center;
 }
