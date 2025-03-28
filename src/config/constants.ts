@@ -1,3 +1,5 @@
+import { routes } from "./routes";
+
 export const imageSources = {
   // We're gonna create an S3 bucket at some point.
   classifiedPlaceholder:
@@ -5,3 +7,16 @@ export const imageSources = {
 };
 
 export const CLASSIFIEDS_PER_PAGE = 9;
+
+export const navLinks = [
+  {
+    id: 1,
+    href: routes.home,
+    label: "Home",
+  },
+  {
+    id: 2,
+    href: routes.inventory,
+    label: "Inventory",
+  },
+];
