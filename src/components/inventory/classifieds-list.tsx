@@ -1,17 +1,21 @@
+"use client";
+
 import { ClassifiedWithImages } from "@/config/types";
 import { ClassifiedCard } from "./classified-card";
+import { use } from "react";
 
 interface ClassifiedsListProps {
-  classifieds: ClassifiedWithImages[];
+  classifieds: Promise<ClassifiedWithImages[]>;
   favourites: number[];
 }
 
 export const ClassifiedsList = (props: ClassifiedsListProps) => {
   const { classifieds, favourites } = props;
+  const inventory = use(classifieds); // use is a React API that lets you read the value of a resource like a Promise or context.
   return (
-    <div className="grid-cols-2 md:grid-cols-3 gap-4 xl:grid-cols-4 grid">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
       {/* Map over the classifieds and return a ClassifiedCard for each one */}
-      {classifieds.map((classified) => {
+      {inventory.map((classified) => {
         return (
           <ClassifiedCard
             key={classified.id}

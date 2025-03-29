@@ -86,7 +86,7 @@ export const ClassifiedCard = (props: ClassifiedCardProps) => {
                 blurDataURL={classified.images[0]?.blurhash}
                 src={classified.images[0]?.src}
                 alt={classified.images[0]?.alt}
-                className="object-cover"
+                className="rounded-t-md object-cover"
                 fill={true}
                 quality={25}
               />
