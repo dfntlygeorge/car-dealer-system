@@ -121,7 +121,7 @@ export const ClassifiedCard = (props: ClassifiedCardProps) => {
                   {/* Use for equal spacing across each card in the grid */}
                 </div>
               )}
-              <ul className="grid w-full grid-cols-1 grid-rows-4 items-center justify-between text-xs text-gray-600 md:grid-cols-2 md:grid-rows-4 md:text-sm xl:flex">
+              <ul className="mt-1 grid w-full grid-cols-2 grid-rows-2 items-center justify-between text-xs text-gray-600 md:text-sm xl:flex">
                 {getKeyClassifiedInfo(classified)
                   .filter((v) => v.value) // filter out any values that are null
                   .map(
