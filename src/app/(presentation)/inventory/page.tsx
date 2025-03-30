@@ -66,7 +66,8 @@ export default async function InventoryPage(props: PageProps) {
         <div className="-mt-1 flex flex-col items-center justify-between space-y-2 pb-4">
           <div className="flex w-full items-center justify-between">
             <h2 className="min-w-fit text-sm font-semibold md:text-base lg:text-xl">
-              We have found {count} classifieds...
+              We have found {count} {count <= 1 ? "classified" : "classifieds"}
+              ...
             </h2>
             <DialogFilters
               minMaxValues={minMaxResult}
