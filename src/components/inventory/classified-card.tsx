@@ -18,6 +18,7 @@ import {
   formatPrice,
   formatTransmission,
 } from "@/lib/utils";
+import { ImgixImage } from "../ui/imgix-image";
 
 interface ClassifiedCardProps {
   classified: ClassifiedWithImages;
@@ -81,7 +82,7 @@ export const ClassifiedCard = (props: ClassifiedCardProps) => {
         >
           <div className="relative aspect-3/2">
             <Link href={routes.singleClassified(classified.slug)}>
-              <Image
+              <ImgixImage
                 placeholder="blur"
                 blurDataURL={classified.images[0]?.blurhash}
                 src={classified.images[0]?.src}
