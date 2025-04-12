@@ -1,14 +1,11 @@
+import { validateIdSchema } from "@/app/_schemas/id.schema";
 import { routes } from "@/config/routes";
 import { Favourites } from "@/config/types";
 import { redis } from "@/lib/redit-store";
 import { setSourceId } from "@/lib/source-id";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 
-const validateIdSchema = z.object({
-  id: z.number().int(),
-});
 // this runs when a post request is sent to this api route.
 export const POST = async (req: NextRequest) => {
   // NextRequest gives access to the request data.
@@ -23,7 +20,7 @@ export const POST = async (req: NextRequest) => {
       },
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -34,7 +31,7 @@ export const POST = async (req: NextRequest) => {
       },
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -66,6 +63,6 @@ export const POST = async (req: NextRequest) => {
     },
     {
       status: 200,
-    }
+    },
   );
 };
