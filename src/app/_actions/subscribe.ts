@@ -7,9 +7,9 @@ import {
   PrismaClientValidationError,
 } from "@prisma/client/runtime/library";
 import { SubscribeSchema } from "../_schemas/subscribe.schema";
+import { PrevState } from "@/config/types";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const subscribeAction = async (_: any, formData: FormData) => {
+export const subscribeAction = async (_: PrevState, formData: FormData) => {
   try {
     // validate the data.
     const { success, data, error } = SubscribeSchema.safeParse({
